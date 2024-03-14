@@ -1,6 +1,24 @@
-- name: My first play
-  hosts: myhosts
+---
+- name: install aws-cli using aws ssm
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_connection: aws_ssm
+    ansible_aws_ssm_bucket_name: cpc-web-application-ssm-bucket
+    ansible_aws_ssm_region: ca-central-1
+
+# ---
+# - name: My first play
+#   hosts: myhosts
+#   become_user: ubuntu
+#   become: yes
+
   tasks:
+  #  - name: copy local docker compose file
+  #    ansible.builtin.copy:
+  #      src: ../README.md
+  #      dest: README.md # will not create directory if it doesn't exist
+
    - name: Ping my hosts
      ansible.builtin.ping:
 
@@ -8,4 +26,15 @@
      ansible.builtin.debug:
       msg: Hello world
 
-      # probably where we would update the docker compose file
+      # the ec2 machine needs the docker image, ansible just runs the command
+
+      # connects to the machine via SSM
+
+      # copy over docker compose file (instructions for creating multiple docker containers)
+      # abstract layer used to run individual docker commands
+
+      # download the image (docker compose pull)
+
+      # start up the image (docker compose up)
+
+      # ansible runs the docker compose file

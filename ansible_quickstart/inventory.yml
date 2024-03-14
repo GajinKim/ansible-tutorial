@@ -1,6 +1,0 @@
-myhosts:
-  hosts:
-    ansible_poc_instance:
-      ansible_host: 99.79.47.223
-    ansible_poc_instance_2:
-      ansible_host: 35.183.72.150
